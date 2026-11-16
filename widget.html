@@ -1,0 +1,39 @@
+<!-- Tiffanie Prince "Impact" stats widget. Paste into a Kajabi "Custom Code" block or a GoHighLevel "Custom HTML/JS" element. -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<section class="tp-impact">
+  <div class="tp-eyebrow"><span></span>THE IMPACT SO FAR<span></span></div>
+  <h2 class="tp-title">Real Women. Real Lives. Real Change.</h2>
+  <div class="tp-grid">
+    <div class="tp-stat"><div class="tp-ring"><div class="tp-num" data-tp="followers">277K+</div></div><div class="tp-label">Social Media<br>Followers</div></div>
+    <div class="tp-stat"><div class="tp-ring"><div class="tp-num" data-tp="views">3.1M+</div></div><div class="tp-label">Monthly<br>Views</div></div>
+    <div class="tp-stat"><div class="tp-ring"><div class="tp-num">5,500+</div></div><div class="tp-label">Women Helped</div></div>
+    <div class="tp-stat"><div class="tp-ring"><div class="tp-num">450+</div></div><div class="tp-label">Discover You<br>Members</div></div>
+    <div class="tp-stat"><div class="tp-ring"><div class="tp-num">16+</div></div><div class="tp-label">Countries Reached</div></div>
+  </div>
+</section>
+<style>
+  .tp-impact{background:radial-gradient(ellipse at 50% 30%,#2a2620 0%,#121110 55%,#000 100%);color:#fff;font-family:'Montserrat',sans-serif;text-align:center;padding:56px 20px 64px;}
+  .tp-eyebrow{display:flex;align-items:center;justify-content:center;gap:14px;color:#D9B96A;font-size:11px;font-weight:700;letter-spacing:3px;}
+  .tp-eyebrow span{display:inline-block;width:44px;height:1px;background:#D9B96A;}
+  .tp-title{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(24px,3.4vw,38px);margin:16px 0 44px;color:#fff;line-height:1.2;}
+  .tp-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:40px 48px;max-width:1100px;margin:0 auto;}
+  .tp-stat{width:150px;}
+  .tp-ring{width:150px;height:150px;border-radius:50%;padding:6px;box-sizing:border-box;background:linear-gradient(145deg,#f6e3a1 0%,#c9a24a 35%,#8a6a22 60%,#f1d98e 100%);box-shadow:0 0 28px rgba(217,185,106,.18);}
+  .tp-num{width:100%;height:100%;border-radius:50%;background:radial-gradient(circle at 50% 40%,#2b2620 0%,#151311 75%);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:30px;color:#EBCB7E;letter-spacing:.5px;}
+  .tp-label{margin-top:18px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#f2f2f2;line-height:1.6;}
+  @media(max-width:600px){.tp-stat,.tp-ring{width:120px}.tp-ring{height:120px}.tp-num{font-size:24px}.tp-grid{gap:32px 28px}}
+  .tp-ring{position:relative;overflow:hidden;background:#8a6a22;animation:tp-float 4.5s ease-in-out infinite;}
+  .tp-ring:before{content:"";position:absolute;inset:-25%;background:conic-gradient(from 0deg,#8a6a22,#f6e3a1,#c9a24a,#6e5418,#f1d98e,#c9a24a,#8a6a22);animation:tp-spin 6s linear infinite;}
+  .tp-num{position:relative;z-index:1;}
+  .tp-stat:nth-child(2) .tp-ring{animation-delay:-.9s}.tp-stat:nth-child(3) .tp-ring{animation-delay:-1.8s}.tp-stat:nth-child(4) .tp-ring{animation-delay:-2.7s}.tp-stat:nth-child(5) .tp-ring{animation-delay:-3.6s}
+  .tp-ring:hover{box-shadow:0 0 40px rgba(235,203,126,.45);}
+  @keyframes tp-spin{to{transform:rotate(360deg)}}
+  @keyframes tp-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+  @media (prefers-reduced-motion:reduce){.tp-ring,.tp-ring:before{animation:none}}
+</style>
+<script>
+(function(){var els=document.querySelectorAll('.tp-impact .tp-num');function run(el){var t=el.textContent.trim(),m=t.match(/^([\d,.]+)([KM]?)(\+?)$/);if(!m||el.dataset.tpDone)return;el.dataset.tpDone=1;var end=parseFloat(m[1].replace(/,/g,'')),dec=(m[1].split('.')[1]||'').length,comma=m[1].indexOf(',')>-1,start=null,d=1800;function f(ts){if(!start)start=ts;var p=Math.min((ts-start)/d,1),e=1-Math.pow(1-p,3),v=(end*e).toFixed(dec);if(comma)v=Number(v).toLocaleString('en-US');el.textContent=v+m[2]+m[3];if(p<1)requestAnimationFrame(f);}requestAnimationFrame(f);}
+function go(){if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){run(e.target);io.unobserve(e.target);}});},{threshold:.4});els.forEach(function(el){io.observe(el);});}}
+var started=false;function once(){if(!started){started=true;go();}}setTimeout(once,2500);
+fetch('https://raw.githubusercontent.com/tiffanielprince-design/social-proof-stats/main/stats.json?t='+Date.now()).then(function(r){return r.json();}).then(function(d){document.querySelectorAll('.tp-impact [data-tp]').forEach(function(el){var k=el.getAttribute('data-tp');if(d[k]&&!el.dataset.tpDone)el.textContent=d[k];});once();}).catch(once);})();
+</script>
